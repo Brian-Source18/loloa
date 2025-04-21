@@ -19,7 +19,7 @@ export default function Contact() {
                         Get in Touch
                     </h2>
                     <p className="text-xl text-white mt-4 drop-shadow">
-                        We'd love to hear from you! Reach out with any questions or inquiries.
+                        We&apos;d love to hear from you! Reach out with any questions or inquiries.
                     </p>
 
                     <form className="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg">

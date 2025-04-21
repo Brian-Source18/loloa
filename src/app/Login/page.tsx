@@ -35,11 +35,14 @@ export default function LoginForm() {
             console.log(response.data);
 
             router.push("/Home"); // Redirect to dashboard after login
-        } catch (err: any) {
-            setError(err.response?.data.error || "Login failed! Please check your credentials.");
-        } finally {
-            setLoading(false);
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                setError(err.response?.data?.error || "Login failed! Please check your credentials.");
+            } else {
+                setError("An unexpected error occurred.");
+            }
         }
+        
     };
 
     return (

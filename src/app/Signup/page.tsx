@@ -33,15 +33,16 @@ export default function SignupForm() {
         setSuccess(null);
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:8000/api/register/",
-                formData,
-                {
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                }
-            );
+            const response = 
+            // await axios.post(
+            //     "http://127.0.0.1:8000/api/register/",
+            //     formData,
+            //     {
+            //         headers: {
+            //             "Content-Type": "application/json"
+            //         }
+            //     }
+            // );
 
             setSuccess("User registered successfully!");
             setFormData({
@@ -57,14 +58,19 @@ export default function SignupForm() {
                 password: "",
                 confirm_password: ""
             });
-        } catch (err: any) {
-            if (err.response?.data) {
-                const errorMessages = Object.values(err.response.data).flat().join(" ");
-                setError(errorMessages);
+        } catch (err: unknown) {
+            if (axios.isAxiosError(err)) {
+                if (err.response?.data) {
+                    const errorMessages = Object.values(err.response.data).flat().join(" ");
+                    setError(errorMessages);
+                } else {
+                    setError("Something went wrong. Please try again later.");
+                }
             } else {
-                setError("Something went wrong. Please try again later.");
+                setError("An unexpected error occurred.");
             }
         }
+        
     };
 
     return (
