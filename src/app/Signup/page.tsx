@@ -34,15 +34,13 @@ export default function SignupForm() {
 
         try {
             const response = 
-            // await axios.post(
-            //     "http://127.0.0.1:8000/api/register/",
-            //     formData,
-            //     {
-            //         headers: {
-            //             "Content-Type": "application/json"
-            //         }
-            //     }
-            // );
+            await axios.post("http://127.0.0.1:8000/api/register/", formData, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            
+            setSuccess(response.data.message || "User registered successfully!");
 
             setSuccess("User registered successfully!");
             setFormData({
